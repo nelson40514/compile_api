@@ -142,5 +142,4 @@ Werkzeug==0.14.1
 wrapt==1.10.11
 zope.component==4.3.0
 zope.event==4.2.0
-zope.hookable==4.0.4
 zope.interface==4.7.1
