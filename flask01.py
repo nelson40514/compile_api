@@ -10,4 +10,4 @@ def hello_world():
 def test_page():
   return 'In test page!'
 
-app.run(threaded=True)
+#app.run(threaded=True)
