@@ -7,5 +7,7 @@ def hello_world():
   return 'Hello, World!'
 
 @app.route('/test')
-  def test_page():
-    return 'In test page!'
+def test_page():
+  return 'In test page!'
+
+app.run(threaded=True)
