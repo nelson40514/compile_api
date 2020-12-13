@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/index')
 def index():
     data = "Deploying a Flask App To Heroku"
-    data += "\nTest01"
+    data += "<br>Test01"
     return data
 
 if __name__ == '__main__':
