@@ -1,10 +1,30 @@
-from flask import *
+from flask import Flask,jsonify,request
+from flask_uploads import UploadSet, IMAGES, configure_uploads
 
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = 'development'
+app.config['UPLOADED_DEF_DEST'] = r'./'
+app.config['UPLOADED_DEF_URL'] = r'./'
 app.config["DEBUG"] = True
 #Define config mode
 app.config['JSON_AS_ASCII'] = False
 #show 繁體中文
+
+abc = UploadSet(name='def',extensions=IMAGES)
+configure_uploads(app,abc)
+
+#test HTML
+html = '''
+<!DOCTYPE html>
+<html lang="en">
+<h1>測試上傳</h1>
+<form method=post enctype=multipart/form-data>
+<input type=file name=in_abc>
+<input type=submit value=Upload>
+</form>
+</html>
+'''
 
 # test data
 tpe = {
@@ -63,9 +83,14 @@ def city_name():
 
     return jsonify(results)
 
-
-
-
+@app.route('/uploads/',methods=['GET','POST'])
+def uploads():
+    if request.method == 'POST' and 'in_abc' in request.files:
+        filename = abc.save(request.files['in_abc'])
+        print(filename)
+        file_url = abc.url(filename)
+        print(file_url)
+    return html
 
 
 
