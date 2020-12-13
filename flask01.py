@@ -20,7 +20,7 @@ html = '''
 <html lang="en">
 <h1>測試上傳</h1>
 <form method=post enctype=multipart/form-data>
-<input type=file name=in_abc>
+<input type=file name=uploadfile>
 <input type=submit value=Upload>
 </form>
 </html>
@@ -85,8 +85,8 @@ def city_name():
 
 @app.route('/uploads/',methods=['GET','POST'])
 def uploads():
-    if request.method == 'POST' and 'in_abc' in request.files:
-        filename = abc.save(request.files['in_abc'])
+    if request.method == 'POST' and 'uploadfile' in request.files:
+        filename = abc.save(request.files['uploadfile'])
         print(filename)
         file_url = abc.url(filename)
         print(file_url)
